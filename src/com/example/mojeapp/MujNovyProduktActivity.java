@@ -25,10 +25,7 @@ public class MujNovyProduktActivity extends Activity{
 				EditText nameInput = ((EditText)findViewById(R.id.produkt_jmeno));
 		    	String name = nameInput.getText().toString();
 		    	
-		    	EditText cenaInput = ((EditText)findViewById(R.id.produkt_cena));
-		    	String cena = cenaInput.getText().toString();
-		    	
-		        produkt = datasource.createProdukt(produkt, cena);
+		        produkt = datasource.createProdukt(name);
 			   }
 	
 	@Override

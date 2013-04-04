@@ -9,16 +9,16 @@ public class MujSQLiteHelper extends SQLiteOpenHelper { //vlastni SQLiteOpenHelp
 	
 	public static final String TABLE_PRODUKTY = "produkty"; //jméno tabulky
 	public static final String COLUMN_ID = "_id"; //sloupec ID
-	public static final String COLUMN_JMENO = "jmeno"; //sloupec jméno produktu
+	public static final String COLUMN_PRODUKT = "produkt"; //sloupec jméno produktu
 	public static final String COLUMN_CENA = "cena"; //sloupec cena
 	
 	private static final String DATABASE_NAME = "produkty.db"; //jmeno DB
-	private static final int DATABASE_VERSION = 2; //verze DB
+	private static final int DATABASE_VERSION = 3; //verze DB
 
 	//slozim sql prikaz pro vytvoreni db
 	private static final String DATABASE_CREATE = "create table "
 			+ TABLE_PRODUKTY + "(" + COLUMN_ID
-			+ " integer primary key autoincrement, " + COLUMN_JMENO
+			+ " integer primary key autoincrement, " + COLUMN_PRODUKT
 			//+ " text not null);";
 			+ " text not null, " + COLUMN_CENA + " text not null);";
 	

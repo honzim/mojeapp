@@ -15,7 +15,7 @@ public class MujDataSource {
   private SQLiteDatabase database;
   private MujSQLiteHelper dbHelper;
   private String[] allColumns = { MujSQLiteHelper.COLUMN_ID,
-      MujSQLiteHelper.COLUMN_JMENO, MujSQLiteHelper.COLUMN_CENA }; //pridano MujSQLiteHelper.COLUMN_CENA
+      MujSQLiteHelper.COLUMN_PRODUKT, MujSQLiteHelper.COLUMN_CENA }; //pridano MujSQLiteHelper.COLUMN_CENA
 
   public MujDataSource(Context context) {
     dbHelper = new MujSQLiteHelper(context);
@@ -29,10 +29,10 @@ public class MujDataSource {
     dbHelper.close();
   }
 
-  public Produkt createProdukt(String jmeno, String cena) {
+  public Produkt createProdukt(String produkt) {
     ContentValues values = new ContentValues();
-    values.put(MujSQLiteHelper.COLUMN_JMENO, jmeno);
-    values.put(MujSQLiteHelper.COLUMN_CENA, cena);
+    values.put(MujSQLiteHelper.COLUMN_PRODUKT, produkt);
+    values.put(MujSQLiteHelper.COLUMN_CENA, produkt);
     long insertId = database.insert(MujSQLiteHelper.TABLE_PRODUKTY, null,
         values);
     Cursor cursor = database.query(MujSQLiteHelper.TABLE_PRODUKTY,
@@ -72,7 +72,7 @@ public class MujDataSource {
   private Produkt cursorToProdukt(Cursor cursor) {
     Produkt produkt = new Produkt();
     produkt.setId(cursor.getLong(0));
-    produkt.setJmeno(cursor.getString(1));
+    produkt.setProdukt(cursor.getString(1));
     return produkt;
   }
 } 

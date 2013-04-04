@@ -2,7 +2,7 @@ package com.example.mojeapp;
 
 public class Produkt {
 	  private long id;
-	  private String jmeno;
+	  private String produkt;
 	  private String cena;
 
 	  public long getId() {
@@ -13,12 +13,12 @@ public class Produkt {
 	    this.id = id;
 	  }
 
-	  public String getJmeno() {
-	    return jmeno;
+	  public String getProdukt() {
+	    return produkt;
 	  }
 
-	  public void setJmeno(String jmeno) {
-	    this.jmeno = jmeno;
+	  public void setProdukt(String produkt) {
+	    this.produkt = produkt;
 	  }
 
 	  public String getCena() {
@@ -32,6 +32,6 @@ public class Produkt {
 	  // Will be used by the ArrayAdapter in the ListView
 	  @Override
 	  public String toString() {
-	    return jmeno;
+	    return produkt;
 	  }
 	} 
