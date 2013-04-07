@@ -29,10 +29,10 @@ public class MujDataSource {
     dbHelper.close();
   }
 
-  public Produkt createProdukt(String produkt) {
+  public Produkt createProdukt(String produkt, String cena) {
     ContentValues values = new ContentValues();
     values.put(MujSQLiteHelper.COLUMN_PRODUKT, produkt);
-    values.put(MujSQLiteHelper.COLUMN_CENA, produkt);
+    values.put(MujSQLiteHelper.COLUMN_CENA, cena);
     long insertId = database.insert(MujSQLiteHelper.TABLE_PRODUKTY, null,
         values);
     Cursor cursor = database.query(MujSQLiteHelper.TABLE_PRODUKTY,

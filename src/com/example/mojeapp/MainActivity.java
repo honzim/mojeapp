@@ -25,10 +25,10 @@ public class MainActivity extends Activity {
 		return true;
 	}
 		
-	public void buttonNovinka(View button) { //kliknuto
-			Intent intent = new Intent(this, MujDatabaseActivity.class);
-			startActivity(intent);
-		   }
+//	public void buttonNovinka(View button) { //kliknuto
+//			Intent intent = new Intent(this, MujDatabaseActivity.class);
+//			startActivity(intent);
+//		   }
 
 	public void buttonTestdb(View button) { //kliknuto
 		Intent intent = new Intent(this, TestDatabaseActivity.class);
