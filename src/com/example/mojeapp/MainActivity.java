@@ -40,6 +40,11 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	   }
 	
+	public void buttonSeznamProduktu2(View button) { //kliknuto
+		Intent intent = new Intent(this, MyActivity.class);
+		startActivity(intent);
+	  }
+	
 	public void buttonNovyProdukt(View button) { //kliknuto
 		Intent intent = new Intent(this, MujNovyProduktActivity.class);
 		startActivity(intent);

@@ -62,10 +62,12 @@ public class MujDataSource {
     while (!cursor.isAfterLast()) {
       Produkt produkt = cursorToProdukt(cursor);
       produkty.add(produkt);
+      System.out.println("Produkt: " + produkty);
       cursor.moveToNext();
     }
     // Make sure to close the cursor
     cursor.close();
+    System.out.println("Produkt: " + produkty);
     return produkty;
   }
 
@@ -73,6 +75,8 @@ public class MujDataSource {
     Produkt produkt = new Produkt();
     produkt.setId(cursor.getLong(0));
     produkt.setProdukt(cursor.getString(1));
+    produkt.setProdukt(cursor.getString(2));
+    System.out.println("Produkt: " + produkt);
     return produkt;
   }
 } 

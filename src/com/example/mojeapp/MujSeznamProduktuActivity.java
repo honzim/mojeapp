@@ -6,6 +6,7 @@ import com.google.analytics.tracking.android.EasyTracker;
 
 import android.app.ListActivity;
 import android.os.Bundle;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.widget.ArrayAdapter;
 
 	
@@ -23,7 +24,7 @@ import android.widget.ArrayAdapter;
 		    List<Produkt> values = datasource.getAllProdukty();
 
 		    // Use the SimpleCursorAdapter to show the
-		    // elements in a ListView
+		    // elements in a ListView    
 		    ArrayAdapter<Produkt> adapter = new ArrayAdapter<Produkt>(this,
 		        android.R.layout.simple_list_item_1, values);
 		    setListAdapter(adapter);
