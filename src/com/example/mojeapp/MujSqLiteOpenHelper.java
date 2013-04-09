@@ -7,27 +7,27 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
  
-public class PersonDatabaseHelper {
+public class MujSqLiteOpenHelper {
  
-    private static final String TAG = PersonDatabaseHelper.class.getSimpleName();
+    private static final String TAG = MujSqLiteOpenHelper.class.getSimpleName();
  
     // database configuration
     // if you want the onUpgrade to run then change the database_version
-    private static final int DATABASE_VERSION = 3;
-    private static final String DATABASE_NAME = "produkty.db";
+    private static final int DATABASE_VERSION = 1;
+    private static final String DATABASE_NAME = "mojeapp.db";
  
     // table configuration
     private static final String TABLE_NAME = "produkty";         // Table name
-    private static final String PERSON_TABLE_COLUMN_ID = "_id";     // a column named "_id" is required for cursor
-    private static final String PERSON_TABLE_COLUMN_NAME = "produkt";
-    private static final String PERSON_TABLE_COLUMN_PIN = "cena";
+    private static final String PRODUKTY_TABLE_COLUMN_ID = "_id";     // a column named "_id" is required for cursor
+    private static final String PRODUKTY_TABLE_COLUMN_JMENO = "jmeno";
+    private static final String PRODUKTY_TABLE_COLUMN_CENA = "cena";
  
     private DatabaseOpenHelper openHelper;
     private SQLiteDatabase database;
  
     // this is a wrapper class. that means, from outside world, anyone will communicate with PersonDatabaseHelper,
     // but under the hood actually DatabaseOpenHelper class will perform database CRUD operations 
-    public PersonDatabaseHelper(Context aContext) {
+    public MujSqLiteOpenHelper(Context aContext) {
          
         openHelper = new DatabaseOpenHelper(aContext);
         database = openHelper.getWritableDatabase();
@@ -39,8 +39,8 @@ public class PersonDatabaseHelper {
  
         ContentValues contentValues = new ContentValues();
  
-        contentValues.put(PERSON_TABLE_COLUMN_NAME, aPersonName);
-        contentValues.put(PERSON_TABLE_COLUMN_PIN, aPersonPin);
+        contentValues.put(PRODUKTY_TABLE_COLUMN_JMENO, aPersonName);
+        contentValues.put(PRODUKTY_TABLE_COLUMN_CENA, aPersonPin);
  
         database.insert(TABLE_NAME, null, contentValues);
     }
@@ -66,8 +66,8 @@ public class PersonDatabaseHelper {
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
             // Create your tables here
  
-            String buildSQL = "CREATE TABLE " + TABLE_NAME + "( " + PERSON_TABLE_COLUMN_ID + " INTEGER PRIMARY KEY, " +
-                    PERSON_TABLE_COLUMN_NAME + " TEXT, " + PERSON_TABLE_COLUMN_PIN + " TEXT )";
+            String buildSQL = "CREATE TABLE " + TABLE_NAME + "( " + PRODUKTY_TABLE_COLUMN_ID + " INTEGER PRIMARY KEY, " +
+                    PRODUKTY_TABLE_COLUMN_JMENO + " TEXT, " + PRODUKTY_TABLE_COLUMN_CENA + " TEXT )";
  
             Log.d(TAG, "onCreate SQL: " + buildSQL);
  

@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
  
-public class CustomCursorAdapter extends CursorAdapter {
+public class MujCursorAdapter extends CursorAdapter {
  
-    public CustomCursorAdapter(Context context, Cursor c) {
+    public MujCursorAdapter(Context context, Cursor c) {
         super(context, c);
     }
  
@@ -19,7 +19,7 @@ public class CustomCursorAdapter extends CursorAdapter {
         // when the view will be created for first time,
         // we need to tell the adapters, how each item will look
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View retView = inflater.inflate(R.layout.single_row_item, parent, false);
+        View retView = inflater.inflate(R.layout.listview_design, parent, false);
  
         return retView;
     }
@@ -29,10 +29,10 @@ public class CustomCursorAdapter extends CursorAdapter {
         // here we are setting our data
         // that means, take the data from the cursor and put it in views
  
-        TextView textViewPersonName = (TextView) view.findViewById(R.id.tv_person_name);
+        TextView textViewPersonName = (TextView) view.findViewById(R.id.tv_produkt_jmeno);
         textViewPersonName.setText(cursor.getString(cursor.getColumnIndex(cursor.getColumnName(1))));
  
-        TextView textViewPersonPIN = (TextView) view.findViewById(R.id.tv_person_pin);
+        TextView textViewPersonPIN = (TextView) view.findViewById(R.id.tv_produkt_cena);
         textViewPersonPIN.setText(cursor.getString(cursor.getColumnIndex(cursor.getColumnName(2))));
     }
 }

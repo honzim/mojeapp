@@ -1,45 +1,60 @@
 package com.example.mojeapp;
 
 import com.google.analytics.tracking.android.EasyTracker;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+ 
+public class MujNovyProduktActivity extends Activity {
+ 
+    EditText editTextProduktJmeno;
+    EditText editTextProduktCena;
+ 
+    /**
+     * Called when the activity is first created.
+     */
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+ 
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_novyprodukt);
+ 
+        editTextProduktJmeno = (EditText) findViewById(R.id.produkt_jmeno);
+        editTextProduktCena = (EditText) findViewById(R.id.produkt_cena);
+    }
+ 
+    public void onClickAdd (View btnAdd) {
+ 
+        String produkJmeno = editTextProduktJmeno.getText().toString();
+        String produktCena = editTextProduktCena.getText().toString();
+ 
+        if ( produkJmeno.length() != 0 && produktCena.length() != 0 ) {
+ 
+            Intent newIntent = getIntent();
+            newIntent.putExtra("tag_produkt_jmeno", produkJmeno);
+            newIntent.putExtra("tag_produkt_cena", produktCena);
+ 
+            this.setResult(RESULT_OK, newIntent);
+ 
+            finish();
+        }
+    }
 
-public class MujNovyProduktActivity extends Activity{
-	private MujDataSource datasource;
-	
+    //analytics start
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_novyprodukt);
-		
-		datasource = new MujDataSource(this);
-	    datasource.open();
-	}
-	
-	public void ulozitClicked(View button) { //kliknuto
-				
-				Produkt produkt = null;
-		    	
-				EditText nameInput = ((EditText)findViewById(R.id.produkt_jmeno));
-		    	String name = nameInput.getText().toString();
-		    	
-		    	EditText cenaInput = ((EditText)findViewById(R.id.produkt_cena));
-		    	String cena = cenaInput.getText().toString();
-		    	
-		        produkt = datasource.createProdukt(name, cena);
-			   }
-	
-	@Override
-	protected void onStart() { //analytics
+	protected void onStart() {
 		super.onStart();
 		EasyTracker.getInstance().activityStart(this);
 	}
 	
 	@Override
-	protected void onStop() { //analytics
+	protected void onStop() {
 		super.onStop();
 		EasyTracker.getInstance().activityStop(this);
-	}	
+	}
+	//analytics konec
+
 }
