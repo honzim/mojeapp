@@ -4,9 +4,9 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <!-- Froyo 2.2 až Jelly Bean 4.2  -->
+    <!-- Gingerbread 2.3.3 až Jelly Bean 4.2.x  -->
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="10"
         android:targetSdkVersion="17" />
     
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -27,9 +27,12 @@
             </intent-filter>
         </activity>
         <activity android:name="MujNovyProduktActivity"/>
-        <activity android:name="TestDatabaseActivity"/>
-        <activity android:name="MujDatabaseActivity"/>
         <activity android:name="MujSeznamProduktuActivity"/>
+        <activity android:name="MujListView"/>
+        
+        
+        
+        
         
     </application>
 

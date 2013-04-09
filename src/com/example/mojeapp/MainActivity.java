@@ -25,23 +25,18 @@ public class MainActivity extends Activity {
 		return true;
 	}
 		
-	public void buttonNovinka(View button) { //kliknuto
-			Intent intent = new Intent(this, MujDatabaseActivity.class);
-			startActivity(intent);
-		   }
-
-	public void buttonTestdb(View button) { //kliknuto
-		Intent intent = new Intent(this, TestDatabaseActivity.class);
-		startActivity(intent);
-	   }
-
 	public void buttonSeznamProduktu(View button) { //kliknuto
 		Intent intent = new Intent(this, MujSeznamProduktuActivity.class);
 		startActivity(intent);
-	   }
+	  }
 	
 	public void buttonNovyProdukt(View button) { //kliknuto
 		Intent intent = new Intent(this, MujNovyProduktActivity.class);
+		startActivity(intent);
+	   }
+	
+	public void buttonListView(View button) { //kliknuto
+		Intent intent = new Intent(this, MujListView.class);
 		startActivity(intent);
 	   }
 	

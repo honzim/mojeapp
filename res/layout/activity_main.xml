@@ -9,29 +9,36 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
-    <Button 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Novinka"
-        android:onClick="buttonNovinka"/>
+<!--     <Button  -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:text="Novinka" -->
+<!--         android:onClick="buttonNovinka"/> -->
     
-    <Button 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TestDB"
-        android:onClick="buttonTestdb"/>
+<!--     <Button  -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:text="TestDB" -->
+<!--         android:onClick="buttonTestdb"/> -->
     
     <Button 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Seznam Produktu"
         android:onClick="buttonSeznamProduktu"/>
-    
+        
     <Button 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nový Produkt"
         android:onClick="buttonNovyProdukt"/>
+    
+    <Button 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ListView"
+        android:onClick="buttonListView"/>
+    
     
     <!-- 
     <TextView
