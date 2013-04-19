@@ -7,9 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
  
-public class MujSqLiteOpenHelper {
+public class NewDatabaseSqlite {
  
-    private static final String TAG = MujSqLiteOpenHelper.class.getSimpleName();
+    private static final String TAG = NewDatabaseSqlite.class.getSimpleName();
  
     // database configuration
     // if you want the onUpgrade to run then change the database_version
@@ -27,7 +27,7 @@ public class MujSqLiteOpenHelper {
  
     // this is a wrapper class. that means, from outside world, anyone will communicate with PersonDatabaseHelper,
     // but under the hood actually DatabaseOpenHelper class will perform database CRUD operations 
-    public MujSqLiteOpenHelper(Context aContext) {
+    public NewDatabaseSqlite(Context aContext) {
          
         openHelper = new DatabaseOpenHelper(aContext);
         database = openHelper.getWritableDatabase();
