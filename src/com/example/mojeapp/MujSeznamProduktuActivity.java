@@ -15,7 +15,7 @@ import android.widget.ListView;
 public class MujSeznamProduktuActivity extends Activity {
  
     private MujCursorAdapter customAdapter;
-    private NewDatabaseSqlite databaseHelper;
+    private MujDatabaseSqlite databaseHelper;
     private static final int ENTER_DATA_REQUEST_CODE = 1;
     private ListView listView;
  
@@ -27,7 +27,7 @@ public class MujSeznamProduktuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seznamproduktu);
  
-        databaseHelper = new NewDatabaseSqlite(this);
+        databaseHelper = new MujDatabaseSqlite(this);
  
         listView = (ListView) findViewById(R.id.list_data);
  

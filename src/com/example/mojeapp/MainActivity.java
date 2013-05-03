@@ -25,6 +25,11 @@ public class MainActivity extends Activity {
 		return true;
 	}
 		
+	public void buttonNewListView(View button) { //kliknuto
+		Intent intent = new Intent(this, NewListView.class);
+		startActivity(intent);
+	   }
+	
 	public void buttonSeznamProduktu(View button) { //kliknuto
 		Intent intent = new Intent(this, MujSeznamProduktuActivity.class);
 		startActivity(intent);

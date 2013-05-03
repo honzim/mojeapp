@@ -15,8 +15,8 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class MujListView extends Activity {
 	
-	//private MujCursorAdapter adapter;
-	//private NewDatabaseSqlite databaseHelper;
+	private MujCursorAdapter adapter;
+	private MujDatabaseSqlite databaseHelper;
 	private ListView listView;
 	
 	
@@ -30,7 +30,7 @@ public class MujListView extends Activity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, 
                 android.R.layout.simple_list_item_1, mujStringArray);
 
-        //databaseHelper = new NewDatabaseSqlite(this);
+        databaseHelper = new MujDatabaseSqlite(this);
         
         
         //new Handler().post(new Runnable() {
@@ -51,7 +51,7 @@ public class MujListView extends Activity {
        
        listView.setOnItemClickListener(new OnItemClickListener() {
     	   public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-       		Toast.makeText(getApplicationContext(), "Vybral jsi " + mujStringArray[(int) id], Toast.LENGTH_SHORT).show();
+       		Toast.makeText(getApplicationContext(), "Vybral jsi " + id, Toast.LENGTH_SHORT).show();
        		}
        	});
 
