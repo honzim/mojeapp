@@ -18,27 +18,23 @@ public class NewListView extends Activity {
 	private MujDatabaseSqlite databaseHelper;
 	private MujCursorAdapter customAdapter;
 
-
-	
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newlistview);
         updateList();
         
-        databaseHelper = new MujDatabaseSqlite(this);
-        
-                
-        listView = (ListView) findViewById(R.id.listview);
-        
-        listView.setOnItemClickListener(new OnItemClickListener() {
-     	   public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        		Toast.makeText(getApplicationContext(), "Vybral jsi " + id, Toast.LENGTH_SHORT).show();
-        		}
-        	});       
+//        databaseHelper = new MujDatabaseSqlite(this);
+//                        
+//        listView = (ListView) findViewById(R.id.listview);
+//        
+//        listView.setOnItemClickListener(new OnItemClickListener() {
+//     	   public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//        		Toast.makeText(getApplicationContext(), "Vybral jsi " + id, Toast.LENGTH_SHORT).show();
+//        		}
+//        	});       
     }
     
     public void updateList() {
-		// TODO Auto-generated method stub
     	Context ctx = getBaseContext();
         NewDatabaseSqlite notes = new NewDatabaseSqlite(ctx);
         
@@ -48,15 +44,15 @@ public class NewListView extends Activity {
         ListAdapter adapter = new SimpleCursorAdapter(ctx,
                 android.R.layout.simple_list_item_1, notes.getProdukty(),
                 from, to, 0);
+        
+        listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(adapter);
         
         notes.close();
 	}
 
 	public void onClickEnterData(View btnAdd) {
-    	 
         startActivityForResult(new Intent(this, MujNovyProduktActivity.class), ENTER_DATA_REQUEST_CODE);
- 
     }
     
     @Override

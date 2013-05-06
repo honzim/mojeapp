@@ -1,5 +1,6 @@
 package com.example.mojeapp;
 
+import android.R;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -25,7 +26,7 @@ public class NotesListFragment extends ListFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		
-		View view = inflater.inflate(R.layout.notes_list, container, false);
+		View view = inflater.inflate(R.layout.activity_newlistview, container, false);
 		return view;
 	}
 	
