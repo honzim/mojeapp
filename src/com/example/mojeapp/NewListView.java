@@ -35,7 +35,7 @@ public class NewListView extends Activity {
     }
     
     public void updateList() {
-    	Context ctx = getBaseContext();
+    	final Context ctx = getBaseContext();
         NewDatabaseSqlite notes = new NewDatabaseSqlite(ctx);
         
         String[] from = { NewDatabaseSqlite.COLUMN_JMENO };
@@ -49,6 +49,17 @@ public class NewListView extends Activity {
         listView.setAdapter(adapter);
         
         notes.close();
+        
+        listView.setOnItemClickListener(new OnItemClickListener() {
+        	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        		Toast.makeText(getApplicationContext(), "Vybral jsi " + id, Toast.LENGTH_SHORT).show();                Intent intent2 = new Intent(ctx, MujNovyProduktActivity.class);
+        		Intent intent = new Intent(ctx, MujNovyProduktActivity.class);
+        		intent.putExtra("intent_id", id);
+        		startActivity(intent);
+
+     		}
+     	});       
+
 	}
 
 	public void onClickEnterData(View btnAdd) {
@@ -57,15 +68,17 @@ public class NewListView extends Activity {
     
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
- 
-        super.onActivityResult(requestCode, resultCode, data);
- 
-        if (requestCode == ENTER_DATA_REQUEST_CODE && resultCode == RESULT_OK) {
- 
-            databaseHelper.insertData(data.getExtras().getString("tag_produkt_jmeno"), data.getExtras().getString("tag_produkt_cena"));
- 
-            //customAdapter.changeCursor(databaseHelper.getAllData());
-        }
+// 
+//        super.onActivityResult(requestCode, resultCode, data);
+// 
+//        if (requestCode == ENTER_DATA_REQUEST_CODE && resultCode == RESULT_OK) {
+// 
+//            databaseHelper.insertData(data.getExtras().getString("tag_produkt_jmeno"), data.getExtras().getString("tag_produkt_cena"));
+// 
+//            //customAdapter.changeCursor(databaseHelper.getAllData());
+//        }
+    	
+    	updateList();
     }
 
 

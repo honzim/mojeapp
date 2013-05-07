@@ -10,6 +10,8 @@ import android.widget.EditText;
  
 public class MujNovyProduktActivity extends Activity {
  
+	private MujDatabaseSqlite databaseHelper;
+
     EditText editTextProduktJmeno;
     EditText editTextProduktCena;
  
@@ -33,9 +35,13 @@ public class MujNovyProduktActivity extends Activity {
  
         if ( produkJmeno.length() != 0 && produktCena.length() != 0 ) {
  
-            Intent newIntent = getIntent();
-            newIntent.putExtra("tag_produkt_jmeno", produkJmeno);
-            newIntent.putExtra("tag_produkt_cena", produktCena);
+
+        	databaseHelper = new MujDatabaseSqlite(this);
+        	databaseHelper.insertData(produkJmeno, produktCena);
+        	
+        	Intent newIntent = getIntent();
+            //newIntent.putExtra("tag_produkt_jmeno", produkJmeno);
+            //newIntent.putExtra("tag_produkt_cena", produktCena);
  
             this.setResult(RESULT_OK, newIntent);
  
