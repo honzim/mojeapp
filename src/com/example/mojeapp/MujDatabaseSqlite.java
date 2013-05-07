@@ -54,6 +54,12 @@ public class MujDatabaseSqlite {
         return database.rawQuery(buildSQL, null);
     }
  
+    
+    public Cursor getSingleData () {
+    	String buildSQL = "SELECT _id, jmeno, cena FROM "
+    			+ TABLE_NAME + " WHERE _id = 1";
+    	return database.rawQuery(buildSQL, null);
+    }
     // this DatabaseOpenHelper class will actually be used to perform database related operation 
      
     private class DatabaseOpenHelper extends SQLiteOpenHelper {

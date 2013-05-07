@@ -15,24 +15,13 @@ import android.support.v4.widget.SimpleCursorAdapter;;
 public class NewListView extends Activity {
 	private ListView listView;
     private static final int ENTER_DATA_REQUEST_CODE = 1;
-	private MujDatabaseSqlite databaseHelper;
-	private MujCursorAdapter customAdapter;
-
+	public static final String INTENTID = "com.example.mojeapp.MESSAGE";
+	
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newlistview);
         updateList();
-        
-//        databaseHelper = new MujDatabaseSqlite(this);
-//                        
-//        listView = (ListView) findViewById(R.id.listview);
-//        
-//        listView.setOnItemClickListener(new OnItemClickListener() {
-//     	   public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        		Toast.makeText(getApplicationContext(), "Vybral jsi " + id, Toast.LENGTH_SHORT).show();
-//        		}
-//        	});       
-    }
+        }
     
     public void updateList() {
     	final Context ctx = getBaseContext();
@@ -52,14 +41,13 @@ public class NewListView extends Activity {
         
         listView.setOnItemClickListener(new OnItemClickListener() {
         	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        		Toast.makeText(getApplicationContext(), "Vybral jsi " + id, Toast.LENGTH_SHORT).show();                Intent intent2 = new Intent(ctx, MujNovyProduktActivity.class);
-        		Intent intent = new Intent(ctx, MujNovyProduktActivity.class);
-        		intent.putExtra("intent_id", id);
+        		Toast.makeText(getApplicationContext(), "Vybral jsi " + id, Toast.LENGTH_SHORT).show();
+        		Intent intent = new Intent(ctx, NewUpravitProduktActivity.class);
+        		String message = String.valueOf(id);
+        		intent.putExtra(INTENTID, message);
         		startActivity(intent);
-
      		}
      	});       
-
 	}
 
 	public void onClickEnterData(View btnAdd) {
@@ -68,19 +56,6 @@ public class NewListView extends Activity {
     
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-// 
-//        super.onActivityResult(requestCode, resultCode, data);
-// 
-//        if (requestCode == ENTER_DATA_REQUEST_CODE && resultCode == RESULT_OK) {
-// 
-//            databaseHelper.insertData(data.getExtras().getString("tag_produkt_jmeno"), data.getExtras().getString("tag_produkt_cena"));
-// 
-//            //customAdapter.changeCursor(databaseHelper.getAllData());
-//        }
-    	
     	updateList();
     }
-
-
-
 }
