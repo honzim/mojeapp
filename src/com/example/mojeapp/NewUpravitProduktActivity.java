@@ -32,7 +32,10 @@ public class NewUpravitProduktActivity extends Activity {
 
         
         editTextProduktJmeno = (EditText) findViewById(R.id.produkt_jmeno);
+        //editTextProduktJmeno.setText("Jmeno");
+        
         editTextProduktCena = (EditText) findViewById(R.id.produkt_cena);
+        //editTextProduktCena.setText("Cena");
     }
  
     public void onClickAdd (View btnAdd) {
