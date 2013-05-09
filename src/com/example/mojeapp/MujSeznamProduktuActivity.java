@@ -7,12 +7,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
  
 public class MujSeznamProduktuActivity extends Activity {
  
     private MujCursorAdapter customAdapter;
-    private MujSqLiteOpenHelper databaseHelper;
+    private MujDatabaseSqlite databaseHelper;
     private static final int ENTER_DATA_REQUEST_CODE = 1;
     private ListView listView;
  
@@ -24,7 +27,7 @@ public class MujSeznamProduktuActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seznamproduktu);
  
-        databaseHelper = new MujSqLiteOpenHelper(this);
+        databaseHelper = new MujDatabaseSqlite(this);
  
         listView = (ListView) findViewById(R.id.list_data);
  
@@ -40,7 +43,7 @@ public class MujSeznamProduktuActivity extends Activity {
             }
         });
     }
- 
+     
     public void onClickEnterData(View btnAdd) {
  
         startActivityForResult(new Intent(this, MujNovyProduktActivity.class), ENTER_DATA_REQUEST_CODE);

@@ -29,7 +29,8 @@
         <activity android:name="MujNovyProduktActivity"/>
         <activity android:name="MujSeznamProduktuActivity"/>
         <activity android:name="MujListView"/>
-        
+        <activity android:name="NewListView"/>
+        <activity android:name="NewUpravitProduktActivity"/>
         
         
         
