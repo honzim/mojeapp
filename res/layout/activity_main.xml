@@ -15,11 +15,11 @@
 <!--         android:text="Novinka" -->
 <!--         android:onClick="buttonNovinka"/> -->
     
-<!--     <Button  -->
-<!--         android:layout_width="wrap_content" -->
-<!--         android:layout_height="wrap_content" -->
-<!--         android:text="TestDB" -->
-<!--         android:onClick="buttonTestdb"/> -->
+    <Button 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NewListView"
+        android:onClick="buttonNewListView"/>
     
     <Button 
         android:layout_width="wrap_content"

@@ -1,5 +1,6 @@
 package com.example.mojeapp;
 
+//import com.example.mojeapp.app.NewUpravitProduktActivity;
 import com.google.analytics.tracking.android.EasyTracker;
 
 import android.app.Activity;
@@ -7,8 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
  
-public class MujNovyProduktActivity extends Activity {
+public class NewUpravitProduktActivity extends Activity {
  
 	private MujDatabaseSqlite databaseHelper;
 
@@ -23,7 +25,12 @@ public class MujNovyProduktActivity extends Activity {
  
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novyprodukt);
- 
+        
+        Intent intent = getIntent();
+        String id = intent.getStringExtra(NewListView.INTENTID);
+		Toast.makeText(getApplicationContext(), "Bla bla bla " + id, Toast.LENGTH_SHORT).show();
+
+        
         editTextProduktJmeno = (EditText) findViewById(R.id.produkt_jmeno);
         editTextProduktCena = (EditText) findViewById(R.id.produkt_cena);
     }
