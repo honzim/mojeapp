@@ -46,7 +46,7 @@ public class NewDatabaseSqlite {
 	public static final String[] columns = { COLUMN_ID, COLUMN_CENA,
 		COLUMN_JMENO };
 	
-	protected static final String ORDER_BY = COLUMN_JMENO + " DESC";
+	protected static final String ORDER_BY = COLUMN_ID + " DESC";
 	
 	public Cursor getProdukty() {
 		SQLiteDatabase db = openHelper.getReadableDatabase();
