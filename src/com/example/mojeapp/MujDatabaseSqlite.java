@@ -18,9 +18,9 @@ public class MujDatabaseSqlite {
  
     // table configuration
     private static final String TABLE_NAME = "produkty";         // Table name
-    private static final String PRODUKTY_TABLE_COLUMN_ID = "_id";     // a column named "_id" is required for cursor
-    private static final String PRODUKTY_TABLE_COLUMN_JMENO = "jmeno";
-    private static final String PRODUKTY_TABLE_COLUMN_CENA = "cena";
+    private static final String COLUMN_ID = "_id";     // a column named "_id" is required for cursor
+    private static final String COLUMN_JMENO = "jmeno";
+    private static final String COLUMN_CENA = "cena";
  
     private DatabaseOpenHelper openHelper;
     private SQLiteDatabase database;
@@ -39,8 +39,8 @@ public class MujDatabaseSqlite {
  
         ContentValues contentValues = new ContentValues();
  
-        contentValues.put(PRODUKTY_TABLE_COLUMN_JMENO, aPersonName);
-        contentValues.put(PRODUKTY_TABLE_COLUMN_CENA, aPersonPin);
+        contentValues.put(COLUMN_JMENO, aPersonName);
+        contentValues.put(COLUMN_CENA, aPersonPin);
  
         database.insert(TABLE_NAME, null, contentValues);
     }
@@ -72,8 +72,8 @@ public class MujDatabaseSqlite {
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
             // Create your tables here
  
-            String buildSQL = "CREATE TABLE " + TABLE_NAME + "( " + PRODUKTY_TABLE_COLUMN_ID + " INTEGER PRIMARY KEY, " +
-                    PRODUKTY_TABLE_COLUMN_JMENO + " TEXT, " + PRODUKTY_TABLE_COLUMN_CENA + " TEXT )";
+            String buildSQL = "CREATE TABLE " + TABLE_NAME + "( " + COLUMN_ID + " INTEGER PRIMARY KEY, " +
+                    COLUMN_JMENO + " TEXT, " + COLUMN_CENA + " TEXT )";
  
             Log.d(TAG, "onCreate SQL: " + buildSQL);
  
