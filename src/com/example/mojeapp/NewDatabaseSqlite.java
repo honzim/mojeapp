@@ -27,7 +27,7 @@ public class NewDatabaseSqlite {
 		public void onCreate(SQLiteDatabase db) {
 			db.execSQL("CREATE TABLE " + TABLE_NAME + " ("
 					+ COLUMN_ID + " INTEGER PRIMARY KEY,"
-					+ COLUMN_JMENO + "TEXT NOT NULL,"
+					+ COLUMN_JMENO + " TEXT NOT NULL,"
 					+ COLUMN_CENA + " TEXT NOT NULL"
 					+ ");");
 		}
@@ -43,8 +43,8 @@ public class NewDatabaseSqlite {
 		openHelper = new DatabaseHelper(ctx);
 	}
 	
-	public static final String[] columns = { COLUMN_ID, COLUMN_CENA,
-		COLUMN_JMENO };
+	public static final String[] columns = { COLUMN_ID, COLUMN_JMENO,
+		COLUMN_CENA };
 	
 	protected static final String ORDER_BY = COLUMN_ID + " DESC";
 	
