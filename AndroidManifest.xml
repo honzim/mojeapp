@@ -17,6 +17,8 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        
+        <!-- 
         <activity
             android:name="com.example.mojeapp.MainActivity"
             android:label="@string/app_name" >
@@ -26,11 +28,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="MujNovyProduktActivity"/>
-        <activity android:name="MujSeznamProduktuActivity"/>
+        -->
+        
+        <activity android:name="MujNovyProduktActivity" />
+        
+        <activity
+            android:name="NewListView"
+            android:label="@string/app_name" >
+            <intent-filter>
+            	<action android:name="android.intent.action.MAIN" />
+            	<category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+            	
+        <activity android:name="NewUpravitProduktActivity" />
+        
+        <!-- 
         <activity android:name="MujListView"/>
-        <activity android:name="NewListView"/>
-        <activity android:name="NewUpravitProduktActivity"/>
+        <activity android:name="MujSeznamProduktuActivity"/>
+          -->
         
         
         
