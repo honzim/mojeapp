@@ -1,5 +1,6 @@
 package com.example.mojeapp;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -15,6 +16,7 @@ public class NewDatabaseSqlite {
 	public static final String COLUMN_CENA = "cena";
 	
 	private SQLiteOpenHelper openHelper;
+	private SQLiteDatabase database;
 	
 	
 	static class DatabaseHelper extends SQLiteOpenHelper {
@@ -41,6 +43,7 @@ public class NewDatabaseSqlite {
 
 	public NewDatabaseSqlite(Context ctx) {
 		openHelper = new DatabaseHelper(ctx);
+		database = openHelper.getWritableDatabase();
 	}
 	
 	public static final String[] columns = { COLUMN_ID, COLUMN_JMENO,
@@ -56,5 +59,18 @@ public class NewDatabaseSqlite {
 	public void close() {
 		openHelper.close();
 	}
+	
+    public void insertData (String aPersonName, String aPersonPin) {
+    	 
+        // we are using ContentValues to avoid sql format errors
+ 
+        ContentValues contentValues = new ContentValues();
+ 
+        contentValues.put(COLUMN_JMENO, aPersonName);
+        contentValues.put(COLUMN_CENA, aPersonPin);
+ 
+        database.insert(TABLE_NAME, null, contentValues);
+    }
+
 	
 }

@@ -30,20 +30,20 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	   }
 	
-	public void buttonSeznamProduktu(View button) { //kliknuto
-		Intent intent = new Intent(this, MujSeznamProduktuActivity.class);
-		startActivity(intent);
-	  }
+//	public void buttonSeznamProduktu(View button) { //kliknuto
+//		Intent intent = new Intent(this, MujSeznamProduktuActivity.class);
+//		startActivity(intent);
+//	  }
 	
 	public void buttonNovyProdukt(View button) { //kliknuto
 		Intent intent = new Intent(this, MujNovyProduktActivity.class);
 		startActivity(intent);
 	   }
 	
-	public void buttonListView(View button) { //kliknuto
-		Intent intent = new Intent(this, MujListView.class);
-		startActivity(intent);
-	   }
+//	public void buttonListView(View button) { //kliknuto
+//		Intent intent = new Intent(this, MujListView.class);
+//		startActivity(intent);
+//	   }
 	
 	//analytics start
 	@Override

@@ -12,7 +12,7 @@ import android.widget.Toast;
  
 public class NewUpravitProduktActivity extends Activity {
  
-	private MujDatabaseSqlite databaseHelper;
+	private NewDatabaseSqlite databaseHelper;
 
     EditText editTextProduktJmeno;
     EditText editTextProduktCena;
@@ -46,7 +46,7 @@ public class NewUpravitProduktActivity extends Activity {
         if ( produkJmeno.length() != 0 && produktCena.length() != 0 ) {
  
 
-        	databaseHelper = new MujDatabaseSqlite(this);
+        	databaseHelper = new NewDatabaseSqlite(this);
         	databaseHelper.insertData(produkJmeno, produktCena);
         	
         	Intent newIntent = getIntent();
