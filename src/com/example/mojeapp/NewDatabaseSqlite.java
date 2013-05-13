@@ -73,9 +73,18 @@ public class NewDatabaseSqlite {
     	String[] selectionArgs = { String.valueOf(smazatId) };
     	database.delete(TABLE_NAME, selection, selectionArgs);
     }
+    
+    public void upravitProdukt (String upravitId, String aProduktJmeno, String aProduktCena) {
+    	ContentValues values = new ContentValues();
+    	values.put(NewDatabaseSqlite.COLUMN_JMENO, aProduktJmeno);
+    	values.put(NewDatabaseSqlite.COLUMN_CENA, aProduktCena);
+    	String selection = NewDatabaseSqlite.COLUMN_ID + " LIKE ?";
+    	String[] selectionArgs = { String.valueOf(upravitId) };
+    	int count = database.update(
+    			NewDatabaseSqlite.TABLE_NAME,
+    			values,
+    			selection,
+    			selectionArgs);
+    }
 
-	public Cursor rawQuery(String string, Object object) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

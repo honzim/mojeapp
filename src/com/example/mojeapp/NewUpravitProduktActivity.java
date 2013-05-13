@@ -73,6 +73,22 @@ public class NewUpravitProduktActivity extends Activity {
 		Toast.makeText(getApplicationContext(), "Smazal jsi id " + id, Toast.LENGTH_SHORT).show();
 		startActivity (new Intent(this, NewListView.class));
     }
+    
+    public void onClickUpravit (View btnUpravit) {
+    	Intent intent = getIntent();
+        String id = intent.getStringExtra(NewListView.INTENTID);
+		String produkJmeno = editTextProduktJmeno.getText().toString();
+        String produktCena = editTextProduktCena.getText().toString();
+        
+        if (produkJmeno.length() != 0 && produktCena.length() != 0) {
+        	databaseHelper = new NewDatabaseSqlite(this);
+        	databaseHelper.upravitProdukt(id, produkJmeno, produktCena);
+    		Toast.makeText(getApplicationContext(), "Upravil jsi id " + id, Toast.LENGTH_SHORT).show();
+    		startActivity (new Intent(this, NewListView.class));
+        }
+
+    	
+    }
 
     //analytics start
 	@Override

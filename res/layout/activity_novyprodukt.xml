@@ -22,6 +22,11 @@
  
     <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Upravit"
+            android:onClick="onClickUpravit"/>
+    
+    <Button android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Přidat"
             android:onClick="onClickAdd"/>
     
