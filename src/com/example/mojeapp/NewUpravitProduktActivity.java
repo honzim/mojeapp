@@ -5,6 +5,8 @@ import com.google.analytics.tracking.android.EasyTracker;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -28,9 +30,13 @@ public class NewUpravitProduktActivity extends Activity {
         
         Intent intent = getIntent();
         String id = intent.getStringExtra(NewListView.INTENTID);
-		Toast.makeText(getApplicationContext(), "Bla bla bla " + id, Toast.LENGTH_SHORT).show();
+		Toast.makeText(getApplicationContext(), "Vybral jsi " + id, Toast.LENGTH_SHORT).show();
 
         
+		//Cursor c = databaseHelper.rawQuery("SELECT * FROM produkty WHERE jmeno = 'Chleba'", null);
+		
+		//SQLiteDatabase db = databaseHelper.getReadableDatabase();
+		
         editTextProduktJmeno = (EditText) findViewById(R.id.produkt_jmeno);
         editTextProduktJmeno.setText("Chleba");
         
@@ -57,6 +63,15 @@ public class NewUpravitProduktActivity extends Activity {
  
             finish();
         }
+    }
+    
+    public void onClickSmazat (View btnSmazat) {
+        Intent intent = getIntent();
+        String id = intent.getStringExtra(NewListView.INTENTID);
+		databaseHelper = new NewDatabaseSqlite(this);
+		databaseHelper.smazatProdukt(id);
+		Toast.makeText(getApplicationContext(), "Smazal jsi id " + id, Toast.LENGTH_SHORT).show();
+		startActivity (new Intent(this, NewListView.class));
     }
 
     //analytics start
