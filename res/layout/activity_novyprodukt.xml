@@ -8,7 +8,7 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:singleLine="true"
-              android:hint="Jméno produktu"
+              android:hint="Název zboží"
               android:focusable="true"
               android:inputType="textCapSentences"
               android:imeOptions="actionNext"/>
@@ -17,13 +17,13 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:singleLine="true"
-              android:hint="Cena"
+              android:hint="Cena Kč"
               android:inputType="numberDecimal"
               android:imeOptions="actionDone"/>
      
     <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Přidatxxxxxxxxx"
+            android:text="Přidat"
             android:onClick="onClickAdd"/>
         
 </LinearLayout>
