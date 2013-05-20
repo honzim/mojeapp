@@ -38,6 +38,7 @@ public class MujNovyProduktActivity extends Activity {
  
             this.setResult(RESULT_OK, newIntent);
  
+            
             finish();
         }
     }

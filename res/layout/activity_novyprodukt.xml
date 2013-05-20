@@ -9,7 +9,8 @@
               android:layout_height="wrap_content"
               android:singleLine="true"
               android:hint="Jméno produktu"
-              android:inputType="textPersonName"
+              android:focusable="true"
+              android:inputType="textCapSentences"
               android:imeOptions="actionNext"/>
  
     <EditText android:id="@+id/produkt_cena"
@@ -19,20 +20,10 @@
               android:hint="Cena"
               android:inputType="numberDecimal"
               android:imeOptions="actionDone"/>
- 
-<!--     <Button android:layout_width="match_parent" -->
-<!--             android:layout_height="wrap_content" -->
-<!--             android:text="Upravit" -->
-<!--             android:onClick="onClickUpravit"/> -->
-    
+     
     <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Přidat"
+            android:text="Přidatxxxxxxxxx"
             android:onClick="onClickAdd"/>
-    
-<!--     <Button android:layout_width="match_parent" -->
-<!--             android:layout_height="wrap_content" -->
-<!--             android:text="Smazat" -->
-<!--             android:onClick="onClickSmazat"/> -->
-    
+        
 </LinearLayout>
