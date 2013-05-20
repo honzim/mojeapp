@@ -8,7 +8,7 @@ import android.provider.BaseColumns;
 public static abstract class FeedEntry implements BaseColumns {
 	 
     public static final String TABLE_NAME = "produkty";         // Table name
-    public static final String COLUMN_NAME_ID = "_id";     // a column named "_id" is required for cursor
+    public static final String COLUMN_NAME_ID = "produktid";     // a column named "_id" is required for cursor
     public static final String COLUMN_NAME_JMENO = "jmeno";
     public static final String COLUMN_NAME_CENA = "cena";
 

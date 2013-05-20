@@ -41,7 +41,7 @@ public class NewListView extends Activity {
         
         listView.setOnItemClickListener(new OnItemClickListener() {
         	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        		//Toast.makeText(getApplicationContext(), "Vybral jsi " + id, Toast.LENGTH_SHORT).show();
+        		Toast.makeText(getApplicationContext(), "Vybral jsi " + id, Toast.LENGTH_SHORT).show();
         		Intent intent = new Intent(ctx, NewUpravitProduktActivity.class);
         		String message = String.valueOf(id);
         		intent.putExtra(INTENTID, message);
