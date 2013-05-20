@@ -39,6 +39,7 @@ public class NewUpravitProduktActivity extends Activity {
 		long itemid = c.getLong(c.getColumnIndexOrThrow(NewDatabaseSqlite.COLUMN_ID));
 		String produktJmeno = c.getString(c.getColumnIndexOrThrow(NewDatabaseSqlite.COLUMN_JMENO));
 		String produktCena = c.getString(c.getColumnIndexOrThrow(NewDatabaseSqlite.COLUMN_CENA));
+		notes.close();
  
         editTextProduktJmeno = (EditText) findViewById(R.id.produkt_jmeno);
         editTextProduktJmeno.setText(produktJmeno);
