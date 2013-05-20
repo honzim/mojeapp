@@ -20,19 +20,23 @@
               android:inputType="numberDecimal"
               android:imeOptions="actionDone"/>
  
-<!--     <Button android:layout_width="match_parent" -->
-<!--             android:layout_height="wrap_content" -->
-<!--             android:text="Upravit" -->
-<!--             android:onClick="onClickUpravit"/> -->
+    <LinearLayout android:orientation="horizontal"
+              	  android:layout_width="fill_parent"
+              	  android:layout_height="wrap_content"
+              	  android:weightSum="1.0" >
     
-    <Button android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Přidat"
-            android:onClick="onClickAdd"/>
-    
-<!--     <Button android:layout_width="match_parent" -->
-<!--             android:layout_height="wrap_content" -->
-<!--             android:text="Smazat" -->
-<!--             android:onClick="onClickSmazat"/> -->
+		    <Button android:layout_width="0dp"
+		            android:layout_height="wrap_content"
+					android:layout_weight=".50"
+		            android:text="Odstranit"
+		            android:onClick="onClickSmazat"/>
+		              	  
+		    <Button android:layout_width="0dp"
+		            android:layout_height="wrap_content"
+		            android:layout_weight=".50"
+		            android:text="Uložit"
+		            android:onClick="onClickUpravit"/>
+        
+    </LinearLayout>
     
 </LinearLayout>

@@ -24,7 +24,7 @@ public class NewUpravitProduktActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
  
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_novyprodukt);
+        setContentView(R.layout.activity_upravitprodukt);
         
         Intent intent = getIntent();
         String id = intent.getStringExtra(NewListView.INTENTID);

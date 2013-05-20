@@ -11,7 +11,7 @@
     
     <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nový Produkt"
+            android:text="Nové zboží"
             android:onClick="onClickEnterData"
              />
 
