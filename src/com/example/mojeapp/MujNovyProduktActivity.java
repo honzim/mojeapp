@@ -15,12 +15,8 @@ public class MujNovyProduktActivity extends Activity {
     EditText editTextProduktJmeno;
     EditText editTextProduktCena;
  
-    /**
-     * Called when the activity is first created.
-     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
- 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novyprodukt);
  
@@ -30,14 +26,11 @@ public class MujNovyProduktActivity extends Activity {
  
     public void onClickAdd (View btnAdd) {
  
-        String produkJmeno = editTextProduktJmeno.getText().toString();
-        String produktCena = editTextProduktCena.getText().toString();
- 
-        if ( produkJmeno.length() != 0 && produktCena.length() != 0 ) {
- 
-
+        String produktJmeno = editTextProduktJmeno.getText().toString();
+        String produktCena = editTextProduktCena.getText().toString(); 
+        if ( produktJmeno.length() != 0 && produktCena.length() != 0 ) {
         	databaseHelper = new NewDatabaseSqlite(this);
-        	databaseHelper.insertData(produkJmeno, produktCena);
+        	databaseHelper.novyProdukt(produktJmeno, produktCena);
         	
         	Intent newIntent = getIntent();
             //newIntent.putExtra("tag_produkt_jmeno", produkJmeno);
@@ -49,7 +42,6 @@ public class MujNovyProduktActivity extends Activity {
         }
     }
 
-    //analytics start
 	@Override
 	protected void onStart() {
 		super.onStart();
@@ -61,6 +53,4 @@ public class MujNovyProduktActivity extends Activity {
 		super.onStop();
 		EasyTracker.getInstance().activityStop(this);
 	}
-	//analytics konec
-
 }

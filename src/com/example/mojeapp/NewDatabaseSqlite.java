@@ -5,11 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 public class NewDatabaseSqlite {
-	private static final String TAG = "NewDatabaseSqlite";
-	
 	protected static final String DATABASE_NAME = "mojeapp.db";
 	protected static final int DATABASE_VERSION = 1;
 	
@@ -20,7 +17,6 @@ public class NewDatabaseSqlite {
 	
 	private SQLiteOpenHelper openHelper;
 	private SQLiteDatabase database;
-	//private NewDatabaseSqlite () {}; podle private FeedReaderContract() {}
 	
 	static class DatabaseHelper extends SQLiteOpenHelper {	
 		DatabaseHelper(Context context) {
@@ -47,7 +43,6 @@ public class NewDatabaseSqlite {
 	}
 	
 	public static final String[] columns = { COLUMN_ID, COLUMN_JMENO, COLUMN_CENA };
-	//public static final String selection = COLUMN_ID + "= 2";
 	protected static final String ORDER_BY = COLUMN_ID + " DESC";
 	
 	public Cursor getProdukty() {
@@ -57,29 +52,12 @@ public class NewDatabaseSqlite {
 	
 	public Cursor nacistJedenProdukt(String nacistId) {
 		SQLiteDatabase db = openHelper.getReadableDatabase();
-		
 		String [] projection = {
 				NewDatabaseSqlite.COLUMN_ID,
 				NewDatabaseSqlite.COLUMN_JMENO,
 				NewDatabaseSqlite.COLUMN_CENA };
 		String selection = COLUMN_ID + " LIKE ?";
 		String[] selectionArgs = { String.valueOf(nacistId) };
-//		String sortOrder = NewDatabaseSqlite.COLUMN_ID + " DESC";
-//		
-////		Cursor c = db.query(
-////				NewDatabaseSqlite.TABLE_NAME,
-////				projection,
-////				selection,
-////				selectionArgs,
-////				null,
-////				null,
-////				sortOrder);
-//		
-////		c.moveToFirst();
-////		long produktId = c.getLong(c.getColumnIndexOrThrow(NewDatabaseSqlite.COLUMN_ID));
-////		String produktJmeno = c.getString(c.getColumnIndexOrThrow(COLUMN_JMENO));
-////		String produktCena = c.getString(c.getColumnIndexOrThrow(COLUMN_CENA));
-//		Log.d(TAG, selection);
 		return db.query(TABLE_NAME, projection, selection, selectionArgs, null, null, null);		
 	}
 	
@@ -87,10 +65,10 @@ public class NewDatabaseSqlite {
 		openHelper.close();
 	}
 	
-    public void insertData (String aPersonName, String aPersonPin) { // we are using ContentValues to avoid sql format errors
+    public void novyProdukt (String produktJmeno, String produktCena) { // we are using ContentValues to avoid sql format errors
         ContentValues contentValues = new ContentValues(); 
-        contentValues.put(COLUMN_JMENO, aPersonName);
-        contentValues.put(COLUMN_CENA, aPersonPin);
+        contentValues.put(COLUMN_JMENO, produktJmeno);
+        contentValues.put(COLUMN_CENA, produktCena);
         database.insert(TABLE_NAME, null, contentValues);
     }
     
