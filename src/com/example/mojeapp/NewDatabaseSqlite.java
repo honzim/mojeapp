@@ -89,5 +89,6 @@ public class NewDatabaseSqlite {
     			values,
     			selection,
     			selectionArgs);
+    	database.close();
     }
 }
