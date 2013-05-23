@@ -15,6 +15,8 @@ public class NewDatabaseSqlite {
 	public static final String COLUMN_JMENO = "jmeno";
 	public static final String COLUMN_CENA = "cena";
 	
+	protected static final String TABLE_NAKUPNISEZNAM = "nakupniseznam";
+	
 	private SQLiteOpenHelper openHelper;
 	private SQLiteDatabase database;
 	
@@ -29,6 +31,17 @@ public class NewDatabaseSqlite {
 					+ COLUMN_JMENO + " TEXT NOT NULL,"
 					+ COLUMN_CENA + " TEXT NOT NULL"
 					+ ");");
+			//
+			//
+			//
+			db.execSQL("CREATE TABLE " + TABLE_NAKUPNISEZNAM + " ("
+					+ COLUMN_ID + " INTEGER PRIMARY KEY,"
+					+ COLUMN_JMENO + " TEXT NOT NULL,"
+					+ COLUMN_CENA + " TEXT NOT NULL"
+					+ ");");
+			//
+			//
+			//
 		}
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

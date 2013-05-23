@@ -45,10 +45,17 @@ public class NewListView extends Activity {
         listView.setOnItemClickListener(new OnItemClickListener() {
         	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         		Toast.makeText(getApplicationContext(), "Koupit " + id, Toast.LENGTH_SHORT).show();
-        		Intent intent = new Intent(ctx, NakupniSeznamActivity.class);
-        		String message = String.valueOf(id);
-        		intent.putExtra(INTENTID, message);
-        		startActivity(intent);
+        		
+        		// vytvoﬁit tabulku nakupniseznam sloupce _id, jmeno, cena
+        		
+        		
+        		// novy záznam do tabulky nakupniseznam
+        		// spusti NewDatabaseSqlite.novyProdukt(???
+        		
+        		//Intent intent = new Intent(ctx, NakupniSeznamActivity.class);
+        		//String message = String.valueOf(id);
+        		//intent.putExtra(INTENTID, message);
+        		//startActivity(intent);
      		}
      	});
         
