@@ -43,6 +43,8 @@
             	
         <activity android:name="NewUpravitProduktActivity" />
         
+        <activity android:name="NakupniSeznamActivity" />
+        
         <!-- 
         <activity android:name="MujListView"/>
         <activity android:name="MujSeznamProduktuActivity"/>
