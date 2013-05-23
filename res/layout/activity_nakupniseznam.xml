@@ -11,8 +11,8 @@
     
     <Button android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Seznam zboží"
-            android:onClick="onClickEnterData"
+            android:text="Seznam produktů"
+            android:onClick="onClickSeznamProduktu"
              />
 
 </LinearLayout>

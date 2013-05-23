@@ -66,8 +66,12 @@ public class NewListView extends Activity {
 		});
 	}
 
-	public void onClickEnterData(View btnAdd) {
+	public void onClickNovyProdukt(View btnAdd) {
         startActivityForResult(new Intent(this, MujNovyProduktActivity.class), ENTER_DATA_REQUEST_CODE);
+    }
+	
+	public void onClickNakupniSeznam(View btnAdd) {
+        startActivityForResult(new Intent(this, NakupniSeznamActivity.class), ENTER_DATA_REQUEST_CODE);
     }
     
     @Override

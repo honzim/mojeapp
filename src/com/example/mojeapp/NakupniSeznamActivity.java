@@ -66,8 +66,8 @@ public class NakupniSeznamActivity extends Activity {
 		});
 	}
 
-	public void onClickEnterData(View btnAdd) {
-        startActivityForResult(new Intent(this, MujNovyProduktActivity.class), ENTER_DATA_REQUEST_CODE);
+	public void onClickSeznamProduktu(View btnAdd) {
+        startActivityForResult(new Intent(this, NewListView.class), ENTER_DATA_REQUEST_CODE);
     }
     
     @Override
