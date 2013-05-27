@@ -1,10 +1,12 @@
 package com.example.mojeapp;
 
+import com.example.mojeapp.NewDatabaseSqlite.DatabaseHelper;
 import com.google.analytics.tracking.android.EasyTracker;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,6 +21,9 @@ public class NewListView extends Activity {
 	private ListView listView;
     private static final int ENTER_DATA_REQUEST_CODE = 1;
 	public static final String INTENTID = "com.example.mojeapp.MESSAGE";
+	
+	private NewDatabaseSqlite databaseHelper;
+
 	
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +49,24 @@ public class NewListView extends Activity {
         
         listView.setOnItemClickListener(new OnItemClickListener() {
         	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        		Toast.makeText(getApplicationContext(), "Koupit " + id, Toast.LENGTH_SHORT).show();
+        		        		
+        		//final Context ctx2 = getBaseContext();
+        		NewDatabaseSqlite notes2 = new NewDatabaseSqlite(ctx);
+        		String nacistId = String.valueOf(id);
+        		Cursor c = notes2.nacistProduktDoSeznamu(nacistId);
         		
-        		// vytvoﬁit tabulku nakupniseznam sloupce _id, jmeno, cena
+        		if (c != null)
+        			c.moveToFirst();
+        		
+        		long itemid = c.getLong(c.getColumnIndexOrThrow(NewDatabaseSqlite.COLUMN_ID));
+        		String produktJmeno = c.getString(c.getColumnIndexOrThrow(NewDatabaseSqlite.COLUMN_JMENO));
+        		String produktCena = c.getString(c.getColumnIndexOrThrow(NewDatabaseSqlite.COLUMN_CENA));
+        		notes2.close();
+        		
+        		Toast.makeText(getApplicationContext(), "Koupit " + produktJmeno, Toast.LENGTH_SHORT).show();
+        		
+        		databaseHelper = new NewDatabaseSqlite(ctx);
+        		databaseHelper.novyProduktDoSeznamu(produktJmeno, produktCena);
         		
         		
         		// novy záznam do tabulky nakupniseznam

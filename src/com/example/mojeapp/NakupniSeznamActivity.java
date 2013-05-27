@@ -28,19 +28,19 @@ public class NakupniSeznamActivity extends Activity {
     
     public void updateList() {
     	final Context ctx = getBaseContext();
-        NewDatabaseSqlite notes = new NewDatabaseSqlite(ctx);
+        NewDatabaseSqlite nakupniseznam = new NewDatabaseSqlite(ctx);
         
         String[] from = { NewDatabaseSqlite.COLUMN_JMENO };
         int[] to = { android.R.id.text1 };
 
         ListAdapter adapter = new SimpleCursorAdapter(ctx,
-                android.R.layout.simple_list_item_1, notes.getProdukty(),
+                android.R.layout.simple_list_item_1, nakupniseznam.getNakupniSeznam(),
                 from, to, 0);
         
         listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(adapter);
         
-        notes.close();
+        nakupniseznam.close();
         
         listView.setOnItemClickListener(new OnItemClickListener() {
         	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

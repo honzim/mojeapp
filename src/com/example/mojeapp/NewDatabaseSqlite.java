@@ -63,6 +63,11 @@ public class NewDatabaseSqlite {
 		return db.query(TABLE_NAME, columns, null, null, null, null, ORDER_BY);
 	}
 	
+	public Cursor getNakupniSeznam() {
+		SQLiteDatabase db= openHelper.getReadableDatabase();
+		return db.query(TABLE_NAKUPNISEZNAM, columns, null, null, null, null, ORDER_BY);
+	}
+	
 	public Cursor nacistJedenProdukt(String nacistId) {
 		SQLiteDatabase db = openHelper.getReadableDatabase();
 		String [] projection = {
@@ -74,6 +79,18 @@ public class NewDatabaseSqlite {
 		return db.query(TABLE_NAME, projection, selection, selectionArgs, null, null, null);		
 	}
 	
+	public Cursor nacistProduktDoSeznamu(String nacistId) {
+		SQLiteDatabase db = openHelper.getReadableDatabase();
+		String [] projection = {
+				NewDatabaseSqlite.COLUMN_ID,
+				NewDatabaseSqlite.COLUMN_JMENO,
+				NewDatabaseSqlite.COLUMN_CENA };
+		String selection = COLUMN_ID + " LIKE ?";
+		String[] selectionArgs = { String.valueOf(nacistId) };
+		return db.query(TABLE_NAME, projection, selection, selectionArgs, null, null, null);		
+	}
+
+	
 	public void close() {
 		openHelper.close();
 	}
@@ -83,6 +100,13 @@ public class NewDatabaseSqlite {
         contentValues.put(COLUMN_JMENO, produktJmeno);
         contentValues.put(COLUMN_CENA, produktCena);
         database.insert(TABLE_NAME, null, contentValues);
+    }
+    
+    public void novyProduktDoSeznamu (String produktJmeno, String produktCena) { // we are using ContentValues to avoid sql format errors
+        ContentValues contentValues = new ContentValues(); 
+        contentValues.put(COLUMN_JMENO, produktJmeno);
+        contentValues.put(COLUMN_CENA, produktCena);
+        database.insert(TABLE_NAKUPNISEZNAM, null, contentValues);
     }
     
     public void smazatProdukt (String smazatId) {
