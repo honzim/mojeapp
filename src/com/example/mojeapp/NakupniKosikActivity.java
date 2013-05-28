@@ -16,7 +16,7 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.support.v4.widget.SimpleCursorAdapter;;
 
-public class NakupniSeznamActivity extends Activity {
+public class NakupniKosikActivity extends Activity {
 	private ListView listView;
     private static final int ENTER_DATA_REQUEST_CODE = 1;
 	public static final String INTENTID = "com.example.mojeapp.MESSAGE";
@@ -25,25 +25,25 @@ public class NakupniSeznamActivity extends Activity {
 	
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nakupniseznam);
+        setContentView(R.layout.activity_nakupnikosik);
         updateList();
         }
     
     public void updateList() {
     	final Context ctx = getBaseContext();
-        NewDatabaseSqlite nakupniseznam = new NewDatabaseSqlite(ctx);
+        NewDatabaseSqlite nakupnikosik = new NewDatabaseSqlite(ctx);
         
         String[] from = { NewDatabaseSqlite.COLUMN_JMENO };
         int[] to = { android.R.id.text1 };
 
         ListAdapter adapter = new SimpleCursorAdapter(ctx,
-                android.R.layout.simple_list_item_1, nakupniseznam.getNakupniSeznam(),
+                android.R.layout.simple_list_item_1, nakupnikosik.getNakupniKosik(),
                 from, to, 0);
         
         listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(adapter);
         
-        nakupniseznam.close();
+        nakupnikosik.close();
         
         listView.setOnItemClickListener(new OnItemClickListener() {
         	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -64,12 +64,6 @@ public class NakupniSeznamActivity extends Activity {
         		databaseHelper = new NewDatabaseSqlite(ctx);
         		databaseHelper.novyProduktDoKosiku(produktJmeno, produktCena);
         		
-        		databaseHelper = new NewDatabaseSqlite(ctx);
-        		databaseHelper.smazatProduktZeSeznamu(id);
-        		
-        		updateList();
-
-        		
         	}
      	});
         
@@ -87,12 +81,18 @@ public class NakupniSeznamActivity extends Activity {
 		});
 	}
 
-	public void onClickSeznamProduktu(View btnAdd) {
-        startActivityForResult(new Intent(this, NewListView.class), ENTER_DATA_REQUEST_CODE);
+	public void onClickNakupniSeznam(View btnAdd) {
+        startActivityForResult(new Intent(this, NakupniSeznamActivity.class), ENTER_DATA_REQUEST_CODE);
     }
 	
-	public void onClickNakupniKosik(View btnAdd) {
-        startActivityForResult(new Intent(this, NakupniKosikActivity.class), ENTER_DATA_REQUEST_CODE);
+	public void onClickZaplatit(View btnAdd) {
+		final Context ctx = getBaseContext();
+		NewDatabaseSqlite notes2 = new NewDatabaseSqlite(ctx);
+		databaseHelper = new NewDatabaseSqlite(ctx);
+		databaseHelper.zaplatit();
+		updateList();
+
+        //startActivityForResult(new Intent(this, NakupniSeznamActivity.class), ENTER_DATA_REQUEST_CODE);
     }
     
     @Override

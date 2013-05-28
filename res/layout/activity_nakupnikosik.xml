@@ -19,15 +19,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight=".50"
-            android:text="Seznam produktů"
-            android:onClick="onClickSeznamProduktu" />
+            android:text="Nákupní seznam"
+            android:onClick="onClickNakupniSeznam" />
     
     	<Button
     	    android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight=".50"
-            android:text="Nákupní košík"
-            android:onClick="onClickNakupniKosik" />
+            android:text="Zaplatit"
+            android:onClick="onClickZaplatit" />
     
 	</LinearLayout>
 	

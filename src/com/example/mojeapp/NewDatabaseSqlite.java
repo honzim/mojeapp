@@ -76,6 +76,11 @@ public class NewDatabaseSqlite {
 		return db.query(TABLE_NAKUPNISEZNAM, columns, null, null, null, null, ORDER_BY);
 	}
 	
+	public Cursor getNakupniKosik() {
+		SQLiteDatabase db= openHelper.getReadableDatabase();
+		return db.query(TABLE_NAKUPNIKOSIK, columns, null, null, null, null, ORDER_BY);
+	}
+	
 	public Cursor nacistJedenProdukt(String nacistId) {
 		SQLiteDatabase db = openHelper.getReadableDatabase();
 		String [] projection = {
@@ -97,6 +102,17 @@ public class NewDatabaseSqlite {
 		String[] selectionArgs = { String.valueOf(nacistId) };
 		return db.query(TABLE_NAME, projection, selection, selectionArgs, null, null, null);		
 	}
+	
+	public Cursor nacistProduktZeSeznamu(String nacistId) {
+		SQLiteDatabase db = openHelper.getReadableDatabase();
+		String [] projection = {
+				NewDatabaseSqlite.COLUMN_ID,
+				NewDatabaseSqlite.COLUMN_JMENO,
+				NewDatabaseSqlite.COLUMN_CENA };
+		String selection = COLUMN_ID + " LIKE ?";
+		String[] selectionArgs = { String.valueOf(nacistId) };
+		return db.query(TABLE_NAKUPNISEZNAM, projection, selection, selectionArgs, null, null, null);		
+	}
 
 	
 	public void close() {
@@ -117,10 +133,23 @@ public class NewDatabaseSqlite {
         database.insert(TABLE_NAKUPNISEZNAM, null, contentValues);
     }
     
+    public void novyProduktDoKosiku (String produktJmeno, String produktCena) {
+        ContentValues contentValues = new ContentValues(); 
+        contentValues.put(COLUMN_JMENO, produktJmeno);
+        contentValues.put(COLUMN_CENA, produktCena);
+        database.insert(TABLE_NAKUPNIKOSIK, null, contentValues);
+    }
+    
     public void smazatProdukt (String smazatId) {
     	String selection = NewDatabaseSqlite.COLUMN_ID + " LIKE ?";
     	String[] selectionArgs = { String.valueOf(smazatId) };
     	database.delete(TABLE_NAME, selection, selectionArgs);
+    }
+    
+    public void smazatProduktZeSeznamu (long smazatId) {
+    	String selection = NewDatabaseSqlite.COLUMN_ID + " LIKE ?";
+    	String[] selectionArgs = { String.valueOf(smazatId) };
+    	database.delete(TABLE_NAKUPNISEZNAM, selection, selectionArgs);
     }
     
     public void upravitProdukt (String upravitId, String aProduktJmeno, String aProduktCena) {
@@ -135,5 +164,9 @@ public class NewDatabaseSqlite {
     			selection,
     			selectionArgs);
     	database.close();
+    }
+    
+    public void zaplatit() {
+    	database.execSQL("DELETE FROM " + TABLE_NAKUPNIKOSIK + ";");
     }
 }
