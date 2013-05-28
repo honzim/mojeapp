@@ -17,6 +17,8 @@ public class NewDatabaseSqlite {
 	
 	protected static final String TABLE_NAKUPNISEZNAM = "nakupniseznam";
 	
+	protected static final String TABLE_NAKUPNIKOSIK = "nakupnikosik";
+	
 	private SQLiteOpenHelper openHelper;
 	private SQLiteDatabase database;
 	
@@ -31,10 +33,16 @@ public class NewDatabaseSqlite {
 					+ COLUMN_JMENO + " TEXT NOT NULL,"
 					+ COLUMN_CENA + " TEXT NOT NULL"
 					+ ");");
-			//
-			//
-			//
+			
 			db.execSQL("CREATE TABLE " + TABLE_NAKUPNISEZNAM + " ("
+					+ COLUMN_ID + " INTEGER PRIMARY KEY,"
+					+ COLUMN_JMENO + " TEXT NOT NULL,"
+					+ COLUMN_CENA + " TEXT NOT NULL"
+					+ ");");
+			//
+			//
+			//
+			db.execSQL("CREATE TABLE " + TABLE_NAKUPNIKOSIK + " ("
 					+ COLUMN_ID + " INTEGER PRIMARY KEY,"
 					+ COLUMN_JMENO + " TEXT NOT NULL,"
 					+ COLUMN_CENA + " TEXT NOT NULL"
@@ -95,14 +103,14 @@ public class NewDatabaseSqlite {
 		openHelper.close();
 	}
 	
-    public void novyProdukt (String produktJmeno, String produktCena) { // we are using ContentValues to avoid sql format errors
+    public void novyProdukt (String produktJmeno, String produktCena) {
         ContentValues contentValues = new ContentValues(); 
         contentValues.put(COLUMN_JMENO, produktJmeno);
         contentValues.put(COLUMN_CENA, produktCena);
         database.insert(TABLE_NAME, null, contentValues);
     }
     
-    public void novyProduktDoSeznamu (String produktJmeno, String produktCena) { // we are using ContentValues to avoid sql format errors
+    public void novyProduktDoSeznamu (String produktJmeno, String produktCena) {
         ContentValues contentValues = new ContentValues(); 
         contentValues.put(COLUMN_JMENO, produktJmeno);
         contentValues.put(COLUMN_CENA, produktCena);
