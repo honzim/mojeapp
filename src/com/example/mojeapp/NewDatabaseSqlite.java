@@ -1,10 +1,18 @@
 package com.example.mojeapp;
 
+import java.io.IOException;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
+import android.content.res.XmlResourceParser;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class NewDatabaseSqlite {
 	protected static final String DATABASE_NAME = "mojeapp.db";
@@ -22,9 +30,14 @@ public class NewDatabaseSqlite {
 	private SQLiteOpenHelper openHelper;
 	private SQLiteDatabase database;
 	
-	static class DatabaseHelper extends SQLiteOpenHelper {	
+	static class DatabaseHelper extends SQLiteOpenHelper {
+		
+		private static final String TAG = null;
+		private final Context fContext;
+		
 		DatabaseHelper(Context context) {
 			super(context, DATABASE_NAME, null, DATABASE_VERSION);
+			fContext = context;
 		}
 		@Override
 		public void onCreate(SQLiteDatabase db) {
@@ -34,23 +47,46 @@ public class NewDatabaseSqlite {
 					+ COLUMN_CENA + " TEXT NOT NULL"
 					+ ");");
 			
+			ContentValues _Values = new ContentValues();
+			Resources res = fContext.getResources();
+			XmlResourceParser _xml = res.getXml(R.xml.produkty);
+			try {
+				int eventType = _xml.getEventType();
+				while (eventType != XmlPullParser.END_DOCUMENT) {
+					if ((eventType == XmlPullParser.START_TAG) &&(_xml.getName().equals("record"))) {
+						String _Jmeno = _xml.getAttributeValue(null, NewDatabaseSqlite.COLUMN_JMENO);
+						String _Cena = _xml.getAttributeValue(null, NewDatabaseSqlite.COLUMN_CENA);
+						_Values.put(NewDatabaseSqlite.COLUMN_JMENO,  _Jmeno);
+						_Values.put(NewDatabaseSqlite.COLUMN_CENA,  _Cena);
+						db.insert(TABLE_NAME, null, _Values);
+					}
+					eventType = _xml.next();
+				}
+			}
+			catch (XmlPullParserException e) {
+				Log.e(TAG,e.getMessage(), e);
+			}
+			catch (IOException e) {
+				Log.e(TAG, e.getMessage(), e);
+			}
+			finally {
+				_xml.close();
+			}
+						
+			
 			db.execSQL("CREATE TABLE " + TABLE_NAKUPNISEZNAM + " ("
 					+ COLUMN_ID + " INTEGER PRIMARY KEY,"
 					+ COLUMN_JMENO + " TEXT NOT NULL,"
 					+ COLUMN_CENA + " TEXT NOT NULL"
 					+ ");");
-			//
-			//
-			//
+			
 			db.execSQL("CREATE TABLE " + TABLE_NAKUPNIKOSIK + " ("
 					+ COLUMN_ID + " INTEGER PRIMARY KEY,"
 					+ COLUMN_JMENO + " TEXT NOT NULL,"
 					+ COLUMN_CENA + " TEXT NOT NULL"
 					+ ");");
-			//
-			//
-			//
-		}
+			}
+		
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 			db.execSQL("DROP TABLE IF EXISTS notes");
@@ -64,7 +100,7 @@ public class NewDatabaseSqlite {
 	}
 	
 	public static final String[] columns = { COLUMN_ID, COLUMN_JMENO, COLUMN_CENA };
-	protected static final String ORDER_BY = COLUMN_ID + " DESC";
+	protected static final String ORDER_BY = COLUMN_JMENO + " ASC";
 	
 	public Cursor getProdukty() {
 		SQLiteDatabase db = openHelper.getReadableDatabase();

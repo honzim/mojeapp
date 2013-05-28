@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<produkty>
+    <record jmeno="Chleba" cena="25" />
+    <record jmeno="Rohlík 43g" cena="1,50" />
+    <record jmeno="Máslo Dr.Halíř 82% 250g" cena="33,90" />
+    <record jmeno="Mléko plnotučné 3,5% 1l" cena="14,90" />
+    <record jmeno="Párky kuřecí jemné 8ks 300g" cena="19,90" />
+    <record jmeno="Sír" cena="100" />
+    <record jmeno="Šampón kopřiva" cena="30" />
+    <record jmeno="Dětské pleny" cena="168" />
+    <record jmeno="Banány 1kg" cena="29,90" />
+    <record jmeno="Paštika" cena="10" />
+    <record jmeno="Tatarská omáčka Hellmann's 440ml" cena="39,90" />
+    <record jmeno="Mrkev 1 kg" cena="15" />
+    <record jmeno="Papírové útěrky" cena="20" />
+    <record jmeno="Kaše rýžová nebo krupičná" cena="39,90" />
+    <record jmeno="Kojenecká voda Fromin 1,5l" cena="13" />
+    <record jmeno="Pórek 1kg" cena="39,90" />
+    <record jmeno="Olivový olej extra panenský 500ml Globus" cena="79,90" />
+    <record jmeno="Slunečnicový olej 1l Korrekt" cena="34,90" />
+    <record jmeno="Sirup 3l" cena="130" />
+    <record jmeno="Šunka 200g" cena="20" />
+    <record jmeno="Activia bílá sladká 6x 120g" cena="54,90" />
+    <record jmeno="Hladká mouka 1kg Korrekt" cena="10,90" />
+    <record jmeno="Okurek hadovka 1ks" cena="11,90" />
+    <record jmeno="Salát ledový 1ks" cena="28,90" />
+    <record jmeno="Popcorn slaný Korrekt" cena="7,90" />
+    <record jmeno="Mrkev balená 1kg" cena="19,90" />
+    <record jmeno="Rajčata cherry 250g" cena="16,90" />
+</produkty>
