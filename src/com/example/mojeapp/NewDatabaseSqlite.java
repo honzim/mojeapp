@@ -18,6 +18,9 @@ public class NewDatabaseSqlite {
 	protected static final String DATABASE_NAME = "mojeapp.db";
 	protected static final int DATABASE_VERSION = 1;
 	
+	
+	protected static final String TABLE_SKUPINY = "skupiny";
+	
 	protected static final String TABLE_NAME = "produkty";
 	public static final String COLUMN_ID = "_id";
 	public static final String COLUMN_JMENO = "jmeno";
@@ -41,6 +44,38 @@ public class NewDatabaseSqlite {
 		}
 		@Override
 		public void onCreate(SQLiteDatabase db) {
+			
+			db.execSQL("CREATE TABLE " + TABLE_SKUPINY + " ("
+					+ COLUMN_ID + " INTEGER PRIMARY KEY,"
+					+ COLUMN_JMENO + " TEXT NOT NULL"
+					+ ");");
+			
+			ContentValues skupiny = new ContentValues();
+			Resources resSkupiny = fContext.getResources();
+			XmlResourceParser xmlSkupiny = resSkupiny.getXml(R.xml.skupiny);
+			try {
+				int eventType = xmlSkupiny.getEventType();
+				while (eventType != XmlPullParser.END_DOCUMENT) {
+					if ((eventType == XmlPullParser.START_TAG) &&(xmlSkupiny.getName().equals("record"))) {
+						String _Jmeno = xmlSkupiny.getAttributeValue(null, NewDatabaseSqlite.COLUMN_JMENO);
+						//String _Cena = xmlSkupiny.getAttributeValue(null, NewDatabaseSqlite.COLUMN_CENA);
+						skupiny.put(NewDatabaseSqlite.COLUMN_JMENO,  _Jmeno);
+						//skupiny.put(NewDatabaseSqlite.COLUMN_CENA,  _Cena);
+						db.insert(TABLE_SKUPINY, null, skupiny);
+					}
+					eventType = xmlSkupiny.next();
+				}
+			}
+			catch (XmlPullParserException e) {
+				Log.e(TAG,e.getMessage(), e);
+			}
+			catch (IOException e) {
+				Log.e(TAG, e.getMessage(), e);
+			}
+			finally {
+				xmlSkupiny.close();
+			}
+			
 			db.execSQL("CREATE TABLE " + TABLE_NAME + " ("
 					+ COLUMN_ID + " INTEGER PRIMARY KEY,"
 					+ COLUMN_JMENO + " TEXT NOT NULL,"
@@ -101,6 +136,11 @@ public class NewDatabaseSqlite {
 	
 	public static final String[] columns = { COLUMN_ID, COLUMN_JMENO, COLUMN_CENA };
 	protected static final String ORDER_BY = COLUMN_JMENO + " ASC";
+	
+	public Cursor getSkupiny() {
+		SQLiteDatabase db = openHelper.getReadableDatabase();
+		return db.query(TABLE_SKUPINY, null, null, null, null, null, ORDER_BY);
+	}
 	
 	public Cursor getProdukty() {
 		SQLiteDatabase db = openHelper.getReadableDatabase();

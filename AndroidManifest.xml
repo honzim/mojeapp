@@ -33,7 +33,7 @@
         <activity android:name="MujNovyProduktActivity" />
         
         <activity
-            android:name="SeznamProduktuActivity"
+            android:name="SeznamSkupinActivity"
             android:label="@string/app_name" >
             <intent-filter>
             	<action android:name="android.intent.action.MAIN" />
@@ -41,12 +41,10 @@
             </intent-filter>
         </activity>
         
+        <activity android:name="SeznamProduktuActivity" />
         <activity android:name="MainActivity" />
-        	
         <activity android:name="NewUpravitProduktActivity" />
-        
         <activity android:name="NakupniSeznamActivity" />
-        
         <activity android:name="NakupniKosikActivity" />
         
         <!-- 
