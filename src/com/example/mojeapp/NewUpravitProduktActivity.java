@@ -27,7 +27,7 @@ public class NewUpravitProduktActivity extends Activity {
         setContentView(R.layout.activity_upravitprodukt);
         
         Intent intent = getIntent();
-        String id = intent.getStringExtra(NewListView.INTENTID);
+        String id = intent.getStringExtra(SeznamProduktuActivity.INTENTID);
 		Toast.makeText(getApplicationContext(), "Vybral jsi " + id, Toast.LENGTH_SHORT).show();
 		Log.d(TAG, "id = " + id);
 		
@@ -64,16 +64,16 @@ public class NewUpravitProduktActivity extends Activity {
     
     public void onClickSmazat (View btnSmazat) {
         Intent intent = getIntent();
-        String id = intent.getStringExtra(NewListView.INTENTID);
+        String id = intent.getStringExtra(SeznamProduktuActivity.INTENTID);
 		databaseHelper = new NewDatabaseSqlite(this);
 		databaseHelper.smazatProdukt(id);
 		Toast.makeText(getApplicationContext(), "Smazal jsi id " + id, Toast.LENGTH_SHORT).show();
-		startActivity (new Intent(this, NewListView.class));
+		startActivity (new Intent(this, SeznamProduktuActivity.class));
     }
     
     public void onClickUpravit (View btnUpravit) {
     	Intent intent = getIntent();
-        String id = intent.getStringExtra(NewListView.INTENTID);
+        String id = intent.getStringExtra(SeznamProduktuActivity.INTENTID);
 		String produktJmeno = editTextProduktJmeno.getText().toString();
         String produktCena = editTextProduktCena.getText().toString();
         
@@ -81,7 +81,7 @@ public class NewUpravitProduktActivity extends Activity {
         	databaseHelper = new NewDatabaseSqlite(this);
         	databaseHelper.upravitProdukt(id, produktJmeno, produktCena);
     		Toast.makeText(getApplicationContext(), "Upravil jsi id " + id, Toast.LENGTH_SHORT).show();
-    		startActivity (new Intent(this, NewListView.class));
+    		startActivity (new Intent(this, SeznamProduktuActivity.class));
         }    	
     }
 

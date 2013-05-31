@@ -88,7 +88,7 @@ public class NakupniSeznamActivity extends Activity {
 	}
 
 	public void onClickSeznamProduktu(View btnAdd) {
-        startActivityForResult(new Intent(this, NewListView.class), ENTER_DATA_REQUEST_CODE);
+        startActivityForResult(new Intent(this, SeznamProduktuActivity.class), ENTER_DATA_REQUEST_CODE);
     }
 	
 	public void onClickNakupniKosik(View btnAdd) {

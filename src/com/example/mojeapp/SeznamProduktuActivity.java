@@ -17,7 +17,7 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.support.v4.widget.SimpleCursorAdapter;;
 
-public class NewListView extends Activity {
+public class SeznamProduktuActivity extends Activity {
 	private ListView listView;
     private static final int ENTER_DATA_REQUEST_CODE = 1;
 	public static final String INTENTID = "com.example.mojeapp.MESSAGE";
